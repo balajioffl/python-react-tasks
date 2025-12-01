@@ -20,8 +20,3 @@ class MovieListAPIView(ListAPIView):
     search_fields = ['title', 'description']
 
     filterset_fields = ['category', 'rating']
-
-
-    
-
-
