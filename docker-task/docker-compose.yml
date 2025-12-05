@@ -1,0 +1,30 @@
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dckap_db
+      MYSQL_USER: dckap
+      MYSQL_PASSWORD: Dckap2023Ecommerce
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
